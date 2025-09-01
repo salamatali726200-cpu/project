@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/salamatali726200-cpu/<aapka-repo>.git'
+                git branch: 'main', url: 'https://github.com/salamatali726200-cpu/project.git'
             }
         }
         stage('Build') {
@@ -14,8 +14,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                mkdir -p /var/www/html
-                cp index.html /var/www/html/
+                mkdir -p /tmp/deploy
+                cp index.html /tmp/deploy/
+                echo "Deployment done in /tmp/deploy"
                 '''
             }
         }
